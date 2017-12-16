@@ -25,7 +25,7 @@ SECRET_KEY = 'sj#-lo)1bxv5)ck*o4lugr332gjt@i#a(w%dp*%y*9r7=v6$rl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '<your_username>.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'dailyplanner.pythonanywhere.com']
 
 
 # Application definition
