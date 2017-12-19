@@ -7,6 +7,10 @@ from django.shortcuts import redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import PostSerializer
 
 
 # Create your views here.
@@ -14,7 +18,7 @@ from django.contrib.auth.decorators import login_required
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now(), author = request.user).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
-    
+
 @login_required
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -68,3 +72,9 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+class Postlist(APIView):
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data)
