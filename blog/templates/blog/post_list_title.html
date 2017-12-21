@@ -24,9 +24,9 @@
             <div class="buttons-coll">
               <a href="{% url 'post_new' %}"><button class="custom-btn btn-4"><span>Add item</span></button></a>
 
-              <a href="{% url 'post_list_title'%}"><button class="custom-btn btn-4"><span>Filter Title</span></button></a>
+              <a href="{% url 'post_list'%}"><button class="custom-btn btn-4"><span>Filter Deadline</span></button></a>
             </div>
-                {% for post in posts %}
+                {% for post in posts_title %}
                     <div class="post">
                     <ul id="myUL">
                       <a href="{% url 'post_detail' pk=post.pk %}"><li class="listitem">{{ post.item }}  <div class="postdate">{{post.deadline}}</div><a href="{% url 'post_remove' pk=post.pk %}"><span class="close">X</span></a></li> </a>

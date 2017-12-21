@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Todo
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
@@ -14,14 +14,25 @@ from .serializers import PostSerializer
 
 
 # Create your views here.
+
 @login_required
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now(), author = request.user).order_by('published_date')
+    posts = Todo.objects.filter(author = request.user).order_by('deadline')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 @login_required
+def post_list_title(request):
+    posts_title = Todo.objects.filter(author = request.user).order_by('item')
+    return render(request, 'blog/post_list_title.html', {'posts_title': posts_title})
+
+@login_required
+def post_list_others(request):
+    posts_others = Todo.objects.order_by('author')
+    return render(request, 'blog/post_list_others.html', {'posts_others': posts_others})
+
+@login_required
 def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Todo, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 @login_required
@@ -40,7 +51,7 @@ def post_new(request):
 
 @login_required
 def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Todo, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -55,9 +66,10 @@ def post_edit(request, pk):
 
 @login_required
 def post_remove(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Todo, pk=pk)
     post.delete()
     return redirect('post_list')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -73,8 +85,9 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
 class Postlist(APIView):
     def get(self, request):
-        posts = Post.objects.all()
+        posts = Todo.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)

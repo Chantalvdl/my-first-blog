@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import Post
+from .models import Post, Todo
 
 class PostForm(forms.ModelForm):
 
     class Meta:
-        model = Post
-        fields = ('title', 'text','created_date')
+        model = Todo
+        fields = ('item', 'comments','deadline', )

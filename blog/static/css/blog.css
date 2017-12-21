@@ -4,6 +4,7 @@ h1 a {
 }
 body {
     padding-left: 15px;
+    font-family: 'Lobster', cursive;
 }
 .page-header {
     background-color: rgb(51, 153, 255);
@@ -18,7 +19,10 @@ body {
 }
 
 .content {
-    margin-left: 40px;
+    margin-left: 23%;
+    margin-right: 23%;
+    display: inline-block;
+
 }
 
 h1, h2, h3, h4 {
@@ -43,11 +47,188 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
 }
-
+.profile, .profile:hover, .profile:visited{
+  font-size: 18px;
+}
 .post {
-    margin-bottom: 70px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-.post h1 a, .post h1 a:visited {
+ul a, ul a:visited, ul a li a, a .btn-4, .btn-4 a:visited {
     color: #000000;
+    text-decoration: none !important;
 }
+
+.listitem{
+  display: block !important;
+  text-align: left;
+}
+
+.container .row{
+  display: inline;
+}
+
+.text-center h2{
+  font-size: 35px;
+}
+.text-center{
+  text-align: center !important;
+  font-size: 20px;
+}
+
+.buttons-coll {
+  width: 90%;
+  margin: 50px auto;
+  text-align: center;
+  margin-right: 100px;
+}
+
+button {
+  margin: 20px;
+}
+
+.custom-btn {
+  padding: 10px 25px;
+  font-family: 'Lobster', cursive;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+/* list items */
+/* Remove margins and padding from the list */
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items */
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+    background: #f9f9f9;
+    display: block;
+    text-decoration: none;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+    background: #ddd;
+    text-decoration: none;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+.postdate{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 40px 12px 16px;
+}
+
+/* Style the close button */
+.close,  {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+
+
+
+/**** BTN No. 4 ****/
+.btn-4 {
+  width: 150px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+
+}
+.btn-4 span {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.btn-4:before, .btn-4:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  background: #000;
+  transition: all 0.3s ease;
+}
+.btn-4:before {
+  height: 50%;
+  width: 2px;
+}
+.btn-4:after {
+  width: 20%;
+  height: 2px;
+}
+.btn-4:hover:before {height: 100%;}
+.btn-4:hover:after {width: 100%;}
+.btn-4 span:before, .btn-4 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background: #000;
+  transition: all 0.3s ease;
+}
+.btn-4 span:before {
+  width: 2px;
+  height: 50%;
+}
+.btn-4 span:after {
+  width: 20%;
+  height: 2px;
+}
+.btn-4 span:hover:before {height: 100%;}
+.btn-4 span:hover:after {width: 100%;}
